@@ -117,8 +117,7 @@ func main() {
 		fromId, err := strconv.Atoi(c.Query("fromId"))
 		if err != nil {
 			ll.S.Errorw("[GetMessages]Convert fromId to number:", "error", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "cannot get fromId"})
-			return
+			fromId = -1
 		}
 		messages, err := service.GetMessages(fromId, cfg.LimitMessage, roomId)
 		if err != nil {

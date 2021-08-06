@@ -1,0 +1,17 @@
+<mat-card class="home-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Welcome to live chat demo</mat-card-title>
+    <mat-card-subtitle>username: {{ username }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="home-full-width">
+      <mat-label>Enter URL</mat-label>
+      <textarea #content matInput [(ngModel)]="defaultValue"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="createRoom()" >CREATE ROOM</button>
+    <button mat-button (click)="joinRoom(content.value)" >JOIN ROOM</button>
+  </mat-card-actions>
+</mat-card>

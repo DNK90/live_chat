@@ -1,0 +1,46 @@
+.home-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.message-input {
+  width: 100%
+}
+
+.mat-card-content {
+  height: 60%;
+}
+
+.message-card {
+  position: relative;
+  height: 80%;
+  min-width: 600px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.message-content {
+  position: relative;
+  height: 60%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mat-card-actions {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.message-input {
+  width: 85%;
+}

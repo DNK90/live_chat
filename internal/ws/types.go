@@ -3,7 +3,7 @@ package ws
 type MessageData struct {
 	MessageId   	int     `json:"messageId" mapstructure:"messageId"`
 	Owner 			string  `json:"owner" mapstructure:"owner"`
-	ConnectionId 	string 	`json:"connectionId" mapstructure:"connectionId"`
+	ConnectionId 	uint32 	`json:"connectionId" mapstructure:"connectionId"`
 	Content 		string	`json:"content" mapstructure:"content"`
 	Status 			int 	`json:"status"  mapstructure:"status"`
 	CreatedTime 	int64   `json:"createdTime" mapstructure:"createdTime"`
