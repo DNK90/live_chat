@@ -17,43 +17,17 @@ EOF
 fi
 
 main(){
-  REPOSITORY=""
-  if  [ "$1" != "minikube" ] ; then
-    REPOSITORY="$1"
-  fi
+  REPOSITORY="$1"
   BASE_DIRECTORY="$2"
-  # install mysql
-  kubectl create secret generic kube-dev-mysql-password --from-literal=username=kube_dev_mysql --from-literal=password=123456
-  helm install -f "$BASE_DIRECTORY"/charts/mysql/mysql.yaml mysql bitnami/mysql
-
-  # build docker images
-#  if  [ "$REPOSITORY" = "minikube" ] ; then
-#    minikube docker-env
-#    eval '$(minikube -p minikube docker-env)'
-#  fi
-
-  docker build -t "$REPOSITORY"chat_demo_server .
-
-  # push built image to container image registry
-  if  [ "$1" != "minikube" ] ; then
-    docker push "$REPOSITORY"chat_demo_server
-  fi
-
+  docker build -t "$REPOSITORY"chat_demo_server "$BASE_DIRECTORY"
   # install server by using helm chart
-  helm install backend -f "$BASE_DIRECTORY"/charts/server.dev.yaml "$BASE_DIRECTORY"/charts/server
-
-  sleep 10
-
+  helm install backend "$BASE_DIRECTORY"/charts/server
+  sleep 5
   # the deployment will be created as backend-live-chat-server
   # expose the port
-  if  [ "$1" != "minikube" ] ; then
-    kubectl expose deployment backend-live-chat-server --type=LoadBalancer --name=live-chat-server-expose-service
-    printf "Wait until live-chat-server-expose-service is finished generating external IP and Port.\n Copy the and paste it to client/environment.prod.ts"
-  elif [ "$1" = "minikube" ] ; then
-    kubectl port-forward svc/backend-live-chat-server 5000:5000 &
-  fi
+  kubectl expose deployment backend-live-chat-server --type=LoadBalancer --name=live-chat-server-expose-service
+  printf "Wait until live-chat-server-expose-service is finished generating external IP and Port.\n Copy the and paste it to client/environment.prod.ts"
   kubectl get svc
-
 }
 main "${1}" "${2}"
 

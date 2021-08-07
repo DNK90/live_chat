@@ -32,11 +32,15 @@ http://35.193.251.224/
 - client: contains client code using Angular 12
 - internal: internal packages of server
 - scripts: contains deployment scripts
-- main.go: main function of server
+- main.go: main function of the server
+
+## Deployment
+
+Use scripts in `scripts` folder to deploy `mysql`,`server`,`client`
 
 ## TODO:
 
-- Apply script to deploy eveything to minikube or GKE.
+- Apply script to deploy everything to minikube or GKE.
 - Validate if a roomId is in database or not.
 - Load more previous messages when user scrolls up
-- scroll bar always auto scroll to the bottom when a new message is added
+- scroll bar always auto scroll to the bottom when a new message added
