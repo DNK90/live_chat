@@ -24,7 +24,7 @@
 
 ## Live Demo
 
-http://35.193.251.224/
+http://34.132.234.152/
 
 ## Project structure
 
