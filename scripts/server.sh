@@ -20,6 +20,16 @@ main(){
   REPOSITORY="$1"
   BASE_DIRECTORY="$2"
   docker build -t "$REPOSITORY"chat_demo_server "$BASE_DIRECTORY"
+  docker push "$REPOSITORY"chat_demo_server
+  # wait a bit to let gcloud update the image
+  # TODO: find a way to get the image status rather than this
+  i=1
+  while [ "$i" -ne 10 ]
+  do
+      echo "waiting..."
+      i=$((i + 1))
+      sleep 1
+  done
   # install server by using helm chart
   helm install backend "$BASE_DIRECTORY"/charts/server
   sleep 5

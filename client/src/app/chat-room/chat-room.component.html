@@ -10,7 +10,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <mat-form-field class="message-input" (keydown)="onKeyDown($event, content)">
+    <mat-form-field class="message-input" (keyup)="onKeyUp($event, content)">
       <mat-label>Input message</mat-label>
       <textarea #content matInput></textarea>
     </mat-form-field>

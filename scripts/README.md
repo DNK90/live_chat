@@ -9,7 +9,7 @@
 ```
 
 The script will deploy backend to kubernetes cluster and expose it to an external IP address with port 5000
-After the script finishes, wait until `expose` service finishes generating the IP address, copy it and paste to field `apiUrl` within `client/src/environments/environment.prod.ts`
+After the script finishes, wait until `live-chat-server-expose-service` service finishes generating the IP address, copy it and paste to field `apiUrl` within `client/src/environments/environment.prod.ts`
 
 2. Deploy client with 2 parameters
 - Your docker repository (asia.gcr.io) combine with your projectId (api-project-695028345372)
@@ -20,4 +20,4 @@ After the script finishes, wait until `expose` service finishes generating the I
 ```
 
 Client is also deployed the same way as server.
-Wait until `expose` service finishes, we can now use the URL to access the application
+Wait until `live-chat-client-expose-service` service finishes, we can now use the URL to access the application

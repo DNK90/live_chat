@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as word from "random-words";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  constructor() {
+    if (!window.localStorage.getItem('username')) {
+      window.localStorage.setItem('username', `${word(1)}_${Date.now()}`)
+    }
+  }
 }

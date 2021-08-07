@@ -26,10 +26,12 @@ export class ChatMessageComponent implements OnInit {
   }
 
   public formatDate(): string {
-    return `${this.createdTime}`
+    const date = new Date(`${this.createdTime}`.length === 10 ? this.createdTime*1000 : this.createdTime)
+    return `${date.getDay()+1}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
   }
 
   public load(msg: messageData) {
+    console.log(`[ChatMessageComponent][load] msg=${JSON.stringify(msg)}`)
     this.owner = msg.owner
     this.createdTime = msg.createdTime || 0
     this.content = msg.content

@@ -9,7 +9,8 @@
 }
 
 .mat-card-content {
-  height: 60%;
+  height: 100%;
+  margin-top: 20px;
 }
 
 .message-card {

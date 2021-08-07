@@ -29,6 +29,7 @@ export class HttpServiceService {
   }
 
   public loadMessages(room: string):Observable<MessagesResponse> {
+    console.log(`[httpService][loadMessages] roomId=${room}`)
     return this.httpClient.get<MessagesResponse>(`http://${environment.apiUrl}/v1/room/${room}/messages`, httpOptions).pipe(
       catchError(
         this.httpErrorHandler.handleError<MessagesResponse>('loadMessages', '')

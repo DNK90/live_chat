@@ -29,7 +29,7 @@ export const MESSAGE_TYPE = {
 export interface MessageModel {
   id: number,
   content: string,
-  username: string,
+  user_name: string,
   room: string,
   created_time: number,
   status: number,

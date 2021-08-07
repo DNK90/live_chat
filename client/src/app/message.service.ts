@@ -30,10 +30,11 @@ export class MessageService {
   public addDynamicComponent(room: string): void {
     this.httpService.loadMessages(room).subscribe(
       (response: MessagesResponse) => {
+        console.log(`[messageService][loadMessages] response=${JSON.stringify(response)}`)
         if (response.data.length > 0) {
-          for (let i=response.data.length-1; i<=0; i--) {
+          for (let i=response.data.length-1; i>=0; i--) {
             this.addComponent(
-              response.data[i].username,
+              response.data[i].user_name,
               response.data[i].content,
               response.data[i].created_time
             )

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as word from 'random-words'
 import {HttpServiceService} from "../http-service.service";
 
 @Component({
@@ -15,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private HttpService:HttpServiceService) {
     this.defaultValue = ''
-    this.username = window.localStorage.getItem('username') || `${word(1)}_${Date.now()}`
+    this.username = window.localStorage.getItem('username') || ''
   }
 
   ngOnInit(): void {
